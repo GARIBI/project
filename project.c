@@ -587,7 +587,7 @@ void gugu()
     printf("you pay : \\%d\n", pay);//니가 낼돈 입력
     printf("change : \\%d - \\%d = \\%d \n", pay, money_tot, pay-money_tot);//거스름돈 출력
     
-    if(pay>my_money)//만약 니가 낼돈이  내가가진돈 크면
+    if(pay>my_money)//만약 니가 낼돈이 내가가진돈보다 크면
     {
         printf("\n!!!You don't have enough money... Shopping faile!!!!\n");//돈이 부족합니다. 쇼핑실패!!출력
     }
