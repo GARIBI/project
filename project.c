@@ -4,32 +4,32 @@
 #include <termio.h>
 #include <memory.h>
 
-void gotoxy(int x, int y)//gotoxyÇÔ¼ö ¾²°ÔÇÒ¼ö ÀÖ°ÔÇÏ´Â ÇÔ¼ö
+void gotoxy(int x, int y)//gotoxyí•¨ìˆ˜ ì“°ê²Œí• ìˆ˜ ìˆê²Œí•˜ëŠ” í•¨ìˆ˜
 {
     printf("\033[%d;%df",y,x);
 
     fflush(stdout);
 }
 
-void MenuPrint();//¸Ş´ºÆÇÇÔ¼ö
-void Name();//ÀÌ¸§ÀÔ·ÂÇÔ¼ö
-void Infor();//1.2.3¹ø ´©¸£¸é °¢°¢ ³Ñ¾î°¡°ÔÇÔ¼ö
-void OX_game();//ox°ÔÀÓÇÔ¼ö
-void buy_things();//µ·ÁÖ´ÂÇÔ¼ö
-void word_game();//´Ü¾î°ÔÀÓÇÔ¼ö
+void MenuPrint();//ë©”ë‰´íŒí•¨ìˆ˜
+void Name();//ì´ë¦„ì…ë ¥í•¨ìˆ˜
+void Infor();//1.2.3ë²ˆ ëˆ„ë¥´ë©´ ê°ê° ë„˜ì–´ê°€ê²Œí•¨ìˆ˜
+void OX_game();//oxê²Œì„í•¨ìˆ˜
+void buy_things();//ëˆì£¼ëŠ”í•¨ìˆ˜
+void word_game();//ë‹¨ì–´ê²Œì„í•¨ìˆ˜
 
-struct shop//±¸Á¶Ã¼ ¼±¾ğ
+struct shop//êµ¬ì¡°ì²´ ì„ ì–¸
 {
-    char name[20];//¹°°ÇÀÌ¸§
-    int money;//µ·
-    int su;//¸î°³
+    char name[20];//ë¬¼ê±´ì´ë¦„
+    int money;//ëˆ
+    int su;//ëª‡ê°œ
 };
 
-void gugu();//¹°°Ç»ç´ÂÇÔ¼ö
-void menu_output();//¹°°ÇÃâ·ÂÇÔ¼ö
+void gugu();//ë¬¼ê±´ì‚¬ëŠ”í•¨ìˆ˜
+void menu_output();//ë¬¼ê±´ì¶œë ¥í•¨ìˆ˜
 
 
-//±¸¸Å ¸ñ·Ï
+//êµ¬ë§¤ ëª©ë¡
 #define menu1 "A4 paper"
 #define menu2 "poketmon dall"
 #define menu3 "24K GOLD pencel"
@@ -39,7 +39,7 @@ void menu_output();//¹°°ÇÃâ·ÂÇÔ¼ö
 #define menu7 "play station"
 #define menu_end "8. END"
 
-//±¸¸Å ¸ñ·ÏÀÇ °¡°İ
+//êµ¬ë§¤ ëª©ë¡ì˜ ê°€ê²©
 #define M1 30
 #define M2 5000
 #define M3 10000
@@ -49,33 +49,33 @@ void menu_output();//¹°°ÇÃâ·ÂÇÔ¼ö
 #define M7 500000
 
 
-//¸Ş´ºÀÇ ÃÖ´ë °³¼ö
+//ë©”ë‰´ì˜ ìµœëŒ€ ê°œìˆ˜
 #define menumax 8
 
 
-int game_score=0;//°ÔÀÓÁ¡¼ö 0À¸·Î ÃÊ±âÈ­
-int my_money=0;//³»µ· 0¿øÀ¸·Î ÃÊ±âÈ­
-void ii();//´Ü¾î°ÔÀÓ¿¡¼­ ¹°°Ç»ç±âÇÔ¼ö¸¦ ¿¬°áÇÒ ÇÔ¼ö
+int game_score=0;//ê²Œì„ì ìˆ˜ 0ìœ¼ë¡œ ì´ˆê¸°í™”
+int my_money=0;//ë‚´ëˆ 0ì›ìœ¼ë¡œ ì´ˆê¸°í™”
+void ii();//ë‹¨ì–´ê²Œì„ì—ì„œ ë¬¼ê±´ì‚¬ê¸°í•¨ìˆ˜ë¥¼ ì—°ê²°í•  í•¨ìˆ˜
 
 void start_game()
-{//°ÔÀÓ½ÃÀÛ
+{//ê²Œì„ì‹œì‘
     int select;
     system("clear");
     MenuPrint();    
-    scanf("%d", &select);//¸Ş´º 1.2.3.¹ø Áß ¼±ÅÃ
+    scanf("%d", &select);//ë©”ë‰´ 1.2.3.ë²ˆ ì¤‘ ì„ íƒ
     
     switch(select)                                                      
      {    
-        case 1://1¹ø ¼±ÅÃ½Ã
-            system("clear");//Ã¢ ±ú²ıÇÏ°Ô
-            Name();//Name ÇÔ¼ö·Î ÀÌµ¿
-            break;//³¡
-        case 2://2¹ø ¼±ÅÃ½Ã
-            system("clear");//Ã¢ ±ú²ıÇÏ°Ô
+        case 1://1ë²ˆ ì„ íƒì‹œ
+            system("clear");//ì°½ ê¹¨ë—í•˜ê²Œ
+            Name();//Name í•¨ìˆ˜ë¡œ ì´ë™
+            break;//ë
+        case 2://2ë²ˆ ì„ íƒì‹œ
+            system("clear");//ì°½ ê¹¨ë—í•˜ê²Œ
             printf("END THE GAME.\n");
-            break;//Á¾·á
-        case 3://3¹ø ¼±ÅÃ½Ã
-            system("clear");//Ã¢ ±ú²ıÇÏ°Ô
+            break;//ì¢…ë£Œ
+        case 3://3ë²ˆ ì„ íƒì‹œ
+            system("clear");//ì°½ ê¹¨ë—í•˜ê²Œ
             { 
                 int a;
                 time_t   current_time;
@@ -90,16 +90,16 @@ void start_game()
                     start_game();
                 }
                 system("clear");
-            }//case3 Á¾·á
+            }//case3 ì¢…ë£Œ
 
-        default://¾Æ¹«°Íµµ ¾Æ´Ò½Ã
-            break;//³¡
-    }//switch³¡
-}//strat_gameÇÔ¼ö ³¡
+        default://ì•„ë¬´ê²ƒë„ ì•„ë‹ì‹œ
+            break;//ë
+    }//switchë
+}//strat_gameí•¨ìˆ˜ ë
 
 int main(void)
 {
-    start_game();//°ÔÀÓ½ÃÀÛ
+    start_game();//ê²Œì„ì‹œì‘
 }
 
 void MenuPrint()
@@ -138,38 +138,38 @@ void MenuPrint()
 
 void Name()
 {
-    int num;//ÀÌ¸§ º¯¼ö
+    int num;//ì´ë¦„ ë³€ìˆ˜
     printf("PUT YOUR NAME ON! : ");
     scanf("%d" , &num);
-    system("clear");//Ã¢ ±ú²ıÇÏ°Ô
-    Infor();//InforÇÔ¼ö·Î ÀÌµ¿
+    system("clear");//ì°½ ê¹¨ë—í•˜ê²Œ
+    Infor();//Inforí•¨ìˆ˜ë¡œ ì´ë™
 }
 void Infor()
 {
-    char name[20];//ÀÌ¸§º¯¼ö
-    int a;//½ÃÀÛ,Á¾·á ÀÔ·Â º¯¼ö
+    char name[20];//ì´ë¦„ë³€ìˆ˜
+    int a;//ì‹œì‘,ì¢…ë£Œ ì…ë ¥ ë³€ìˆ˜
     scanf("%s",name);
     printf("%s! You have to play the game! I will give you money AS MUCH AS you got a SCORE! You can buy things with that money. GOOD LUCK!\n",name);
     printf("\n");
     printf("put 1 to start, put 2 to end.\n");
-    scanf("%d", &a);//1¹ø ´©¸£¸é ½ÃÀÛ, 2¹ø ´©¸£¸é Á¾·á
+    scanf("%d", &a);//1ë²ˆ ëˆ„ë¥´ë©´ ì‹œì‘, 2ë²ˆ ëˆ„ë¥´ë©´ ì¢…ë£Œ
 
     switch(a)
     {
-        case 1://1¹ø ´©¸¦½Ã
-            system("clear");//Ã¢ ±ú²ıÇÏ°Ô
-            OX_game();//OX_gameÇÔ¼ö·Î ÀÌµ¿
-                break;//³¡
-        case 2://2¹ø ´©¸¦½Ã
+        case 1://1ë²ˆ ëˆ„ë¥¼ì‹œ
+            system("clear");//ì°½ ê¹¨ë—í•˜ê²Œ
+            OX_game();//OX_gameí•¨ìˆ˜ë¡œ ì´ë™
+                break;//ë
+        case 2://2ë²ˆ ëˆ„ë¥¼ì‹œ
             printf("END THE GAME.\n");
-                break;//³¡
+                break;//ë
     }
 }
 
 void OX_game()
 {
-    int num, answer;//ÀÔ·Âº¯¼ö,Á¤´äº¯¼ö      
-    srand(time(NULL));//·£´ıÇÔ¼ö ³­¼ö»ı¼º
+    int num, answer;//ì…ë ¥ë³€ìˆ˜,ì •ë‹µë³€ìˆ˜      
+    srand(time(NULL));//ëœë¤í•¨ìˆ˜ ë‚œìˆ˜ìƒì„±
    
     int i;
     system("clear");
@@ -187,33 +187,33 @@ void OX_game()
         printf("(O=put 1, X=put 2!!)\n");
         printf("\n");
                                   
-        switch(rand()%11)//11°³ÀÇ¼ö Áß 1°³ ·£´ıÀ¸·Î °í¸§
+        switch(rand()%11)//11ê°œì˜ìˆ˜ ì¤‘ 1ê°œ ëœë¤ìœ¼ë¡œ ê³ ë¦„
         {
-            case 0://·£´ı¼ö 0ÀÌ °ñ¶óÁ³À»¶§
+            case 0://ëœë¤ìˆ˜ 0ì´ ê³¨ë¼ì¡Œì„ë•Œ
 
                 printf("An ASCII code is a method of expressing the symbols used by a person in a computer.\n(score 5)\n");
-                answer=1;//´äÀº 1¹ø
-                scanf("%d",&num);//1.2¹øÁß ´ä ¼±ÅÃÇØ¼­ ÀÔ·Â
-                if(answer==num)//Á¤´ä°ú ÀÔ·ÂÇÑ ¼ıÀÚ°¡ ÀÏÄ¡ÇÒ¶§
+                answer=1;//ë‹µì€ 1ë²ˆ
+                scanf("%d",&num);//1.2ë²ˆì¤‘ ë‹µ ì„ íƒí•´ì„œ ì…ë ¥
+                if(answer==num)//ì •ë‹µê³¼ ì…ë ¥í•œ ìˆ«ìê°€ ì¼ì¹˜í• ë•Œ
                 {
                     printf("GOOD!\n");
-                    game_score+=5;//°ÔÀÓÁ¡¼ö 5Á¡ Áõ°¡
+                    game_score+=5;//ê²Œì„ì ìˆ˜ 5ì  ì¦ê°€
                 }
 
-            else//¿À´äÀÏ ½Ã ½ÇÆĞ
+            else//ì˜¤ë‹µì¼ ì‹œ ì‹¤íŒ¨
                 printf("WRONG!\n");
                 break;
-        case 1://·£´ı¼ö 1ÀÌ °ñ¶óÁ³À»¶§
+        case 1://ëœë¤ìˆ˜ 1ì´ ê³¨ë¼ì¡Œì„ë•Œ
 
             printf("'Float' data type and 'short' data type are 'real type'.\n(score 5)\n");
-            answer=2;//´äÀº 1¹ø
-            scanf("%d",&num);//1.2¹øÁß ´ä ¼±ÅÃÇØ¼­ ÀÔ·Â
-            if(answer==num)//Á¤´ä°ú ÀÔ·ÂÇÑ ¼ıÀÚ°¡ ÀÏÄ¡ÇÒ¶§
+            answer=2;//ë‹µì€ 1ë²ˆ
+            scanf("%d",&num);//1.2ë²ˆì¤‘ ë‹µ ì„ íƒí•´ì„œ ì…ë ¥
+            if(answer==num)//ì •ë‹µê³¼ ì…ë ¥í•œ ìˆ«ìê°€ ì¼ì¹˜í• ë•Œ
             {
                 printf("GOOD!\n");
-                game_score+=5;//°ÔÀÓÁ¡Á¡¼ö 5Á¡ Áõ°¡
+                game_score+=5;//ê²Œì„ì ì ìˆ˜ 5ì  ì¦ê°€
             }
-            else//¿À´äÀÏ ½Ã ½ÇÆĞ
+            else//ì˜¤ë‹µì¼ ì‹œ ì‹¤íŒ¨
                 printf("WRONG!('short' is 'integer data type'.)\n");
                 break;
         case 2:
@@ -368,23 +368,23 @@ void OX_game()
                     break;
         }
     }
-    printf("\n\n!!!!Your CURRENT SCORE is %d!!!!\n\n",game_score);//ÇöÀç Á¡¼ö Ãâ·Â
-    ii();//iiÇÔ¼ö·Î ÀÌµ¿
+    printf("\n\n!!!!Your CURRENT SCORE is %d!!!!\n\n",game_score);//í˜„ì¬ ì ìˆ˜ ì¶œë ¥
+    ii();//iií•¨ìˆ˜ë¡œ ì´ë™
 }
 
-int cnt = 0;//word_gameÀÇ ´©Àû È½¼ö 0À¸·Î ÃÊ±âÈ­
+int cnt = 0;//word_gameì˜ ëˆ„ì  íšŸìˆ˜ 0ìœ¼ë¡œ ì´ˆê¸°í™”
 
 void ii()
 {
-    word_game();//word_gameÀ¸·Î ÀÌµ¿
+    word_game();//word_gameìœ¼ë¡œ ì´ë™
 
-    if ((cnt-1)<=10)//cnt-1ÀÌ 6º¸´Ù ÀÛ°Å³ª °°À¸¸é
+    if ((cnt-1)<=10)//cnt-1ì´ 6ë³´ë‹¤ ì‘ê±°ë‚˜ ê°™ìœ¼ë©´
     {
-        game_score+=50;//°ÔÀÓÁ¡¼ö 50Á¡ Ãß°¡
+        game_score+=50;//ê²Œì„ì ìˆ˜ 50ì  ì¶”ê°€
     }
-    else if((cnt-1)>10 && (cnt-1)<=13)//6º¸´Ù Å©°í 11º¸´Ù ÀÛ°Å³ª°°À¸¸é
+    else if((cnt-1)>10 && (cnt-1)<=13)//6ë³´ë‹¤ í¬ê³  11ë³´ë‹¤ ì‘ê±°ë‚˜ê°™ìœ¼ë©´
     {
-        game_score+=40;//°ÔÀÓÁ¡¼ö 40Á¡ Ãß°¡
+        game_score+=40;//ê²Œì„ì ìˆ˜ 40ì  ì¶”ê°€
     }
     else if((cnt-1)>14 && (cnt-1)<=17)
     {
@@ -403,29 +403,29 @@ void ii()
         game_score+=5;
     }
 
-    buy_things();//buy_thingsÇÔ¼ö·Î ÀÌµ¿
-}//iiÇÔ¼ö Á¾·á
+    buy_things();//buy_thingsí•¨ìˆ˜ë¡œ ì´ë™
+}//iií•¨ìˆ˜ ì¢…ë£Œ
 
 void word_game()
 {
-    char put[50];//ÀÔ·Â´Ü¾î ¹è¿­
-    int cnt = 0;//½ÃµµÈ½¼ö 0À¸·Î ÃÊ±âÈ­
-    char *ans[] = {"parameter", "double", "main", "&pt", "fgets", "while"}; //   Á¤´ä ´Ü¾î µî·Ï
-    int wnum = sizeof(ans)/sizeof(char *);  // Á¤´ä ´Ü¾îÀÇ °³¼ö
-    int i; //¹®ÀÚ¸¦ Â÷·Ê´ë·Î ºñ±³ÇÏ±â À§ÇÑ º¯¼ö
-    int l;//±æÀÌ
-    char *word; //ÀÓÀÇÀÇ ´Ü¾î Æ÷ÀÎÅÍ ¹è¿­
-    char *pword;//È­¸é¿¡ Ãâ·ÂµÇ´Â ´Ü¾î ¹è¿­
-    int sel; // ³­¼ö
-    srand(time(NULL));                // ½Ã°£À» ±âÁØÀ¸·Î ÃÊ±âÈ­µÇ´Â ³­¼ö »ı¼º ÇÔ¼ö
-    sel = rand() % wnum;             // 0~ wnum-1 ¹üÀ§ÀÇ ³­¼ö »ı¼º
-    word = ans[sel];                 // ÀÓÀÇÀÇ ´Ü¾î Æ÷ÀÎÅÍ
-    l = strlen(word);                //strlenÇÔ¼ö ¹®ÀÚ¿­ÀÇ ±æÀÌ±¸ÇÔ  ´Ü¾îÀÇ ±æÀÌ
-    pword = (char *)malloc(l + 1);   // ´Ü¾îÀÇ ±æÀÌ +1 ¸¸Å­ ÇÒ´çµÈ ¸Ş¸ğ¸® ÁÖ¼Ò¸¦ charÇüÀ¸·Î º¯È¯ÇÏ¿© È­¸é¿¡ ³ªÅ¸³ª´Â ´Ü¾î ¹è¿­
+    char put[50];//ì…ë ¥ë‹¨ì–´ ë°°ì—´
+    int cnt = 0;//ì‹œë„íšŸìˆ˜ 0ìœ¼ë¡œ ì´ˆê¸°í™”
+    char *ans[] = {"parameter", "double", "main", "&pt", "fgets", "while"}; //   ì •ë‹µ ë‹¨ì–´ ë“±ë¡
+    int wnum = sizeof(ans)/sizeof(char *);  // ì •ë‹µ ë‹¨ì–´ì˜ ê°œìˆ˜
+    int i; //ë¬¸ìë¥¼ ì°¨ë¡€ëŒ€ë¡œ ë¹„êµí•˜ê¸° ìœ„í•œ ë³€ìˆ˜
+    int l;//ê¸¸ì´
+    char *word; //ì„ì˜ì˜ ë‹¨ì–´ í¬ì¸í„° ë°°ì—´
+    char *pword;//í™”ë©´ì— ì¶œë ¥ë˜ëŠ” ë‹¨ì–´ ë°°ì—´
+    int sel; // ë‚œìˆ˜
+    srand(time(NULL));                // ì‹œê°„ì„ ê¸°ì¤€ìœ¼ë¡œ ì´ˆê¸°í™”ë˜ëŠ” ë‚œìˆ˜ ìƒì„± í•¨ìˆ˜
+    sel = rand() % wnum;             // 0~ wnum-1 ë²”ìœ„ì˜ ë‚œìˆ˜ ìƒì„±
+    word = ans[sel];                 // ì„ì˜ì˜ ë‹¨ì–´ í¬ì¸í„°
+    l = strlen(word);                //strlení•¨ìˆ˜ ë¬¸ìì—´ì˜ ê¸¸ì´êµ¬í•¨  ë‹¨ì–´ì˜ ê¸¸ì´
+    pword = (char *)malloc(l + 1);   // ë‹¨ì–´ì˜ ê¸¸ì´ +1 ë§Œí¼ í• ë‹¹ëœ ë©”ëª¨ë¦¬ ì£¼ì†Œë¥¼ charí˜•ìœ¼ë¡œ ë³€í™˜í•˜ì—¬ í™”ë©´ì— ë‚˜íƒ€ë‚˜ëŠ” ë‹¨ì–´ ë°°ì—´
 
 
     for(i=0; i <l; i++)
-        pword[i] = '?';     //  È­¸é¿¡ ³ªÅ¸³ª´Â ´Ü¾î ? ·Î ÃÊ±âÈ­
+        pword[i] = '?';     //  í™”ë©´ì— ë‚˜íƒ€ë‚˜ëŠ” ë‹¨ì–´ ? ë¡œ ì´ˆê¸°í™”
     pword[l] = '\0';
 
     printf("==========================================================================\n");
@@ -438,7 +438,7 @@ void word_game()
 
     printf("\n=========================\n  ~~10 times: 50 points \n11~~13 times: 40 points \n14~~17 times: 30 points \n18~~20 times: 20 points \n21~~23 times: 10 points \nOther: 5 points\n=========================\n");
 
-    /* Á¤´ä´Ü¾î¿¡ µû¶ó¼­ Ãâ·ÂµÇ´Â ¹®Á¦*/
+    /* ì •ë‹µë‹¨ì–´ì— ë”°ë¼ì„œ ì¶œë ¥ë˜ëŠ” ë¬¸ì œ*/
     {  if(word[0] == 'p')
         printf("<Question> The data the function needs to perform its work (given from the outside)");
         if(word[0] == 'd')
@@ -456,21 +456,21 @@ void word_game()
     {
         printf("\nMatching word : %s  ", pword);
 
-        fgets(put, sizeof(put), stdin);  //  ¹®ÀÚÀÔ·Â
+        fgets(put, sizeof(put), stdin);  //  ë¬¸ìì…ë ¥
 
-        cnt++;                                    // ½Ãµµ È¸¼ö Ä«¿îÆ®
+        cnt++;                                    // ì‹œë„ íšŒìˆ˜ ì¹´ìš´íŠ¸
 
         for(i=0; i <l; i++)
-            if(pword[i] == '?' && word[i] == put[0])   // ÀÔ·ÂµÈ ¹®ÀÚ°¡ ¾ÆÁ÷ °¡·ÁÁ® ÀÖ°í ÀÔ·ÂÇÑ ¹®ÀÚ°¡ Á¤´ä ´Ü¾î¿¡ ÀÖÀ¸¸é
-                pword[i] = put[0]; //?¿¡ ÀÔ·ÂÇÑ ¹®ÀÚ Ãâ·Â
+            if(pword[i] == '?' && word[i] == put[0])   // ì…ë ¥ëœ ë¬¸ìê°€ ì•„ì§ ê°€ë ¤ì ¸ ìˆê³  ì…ë ¥í•œ ë¬¸ìê°€ ì •ë‹µ ë‹¨ì–´ì— ìˆìœ¼ë©´
+                pword[i] = put[0]; //?ì— ì…ë ¥í•œ ë¬¸ì ì¶œë ¥
         
 
         for(i=0; i <l; i++)
-            if(pword[i] == '?') //?ÀÎ ¹®ÀÚ°¡ ÀÖÀ¸¸é ¹İº¹
+            if(pword[i] == '?') //?ì¸ ë¬¸ìê°€ ìˆìœ¼ë©´ ë°˜ë³µ
                 break;
 
 
-        if(i == l) {      // °¡·ÁÁø ¹®ÀÚ°¡ ¾øÀ¸¸é(Á¤´ä´Ü¾î¸¦ ¸ÂÃèÀ¸¸é)
+        if(i == l) {      // ê°€ë ¤ì§„ ë¬¸ìê°€ ì—†ìœ¼ë©´(ì •ë‹µë‹¨ì–´ë¥¼ ë§ì·„ìœ¼ë©´)
             printf("\nCompleted '%s' only %d times\n\n", pword, cnt-1);
             put[strlen(put)-1] = '\0';
            return 0;
@@ -481,19 +481,19 @@ void word_game()
 
 void buy_things()
 {
-    printf("\n!!!!Your TOTAL SCORE is %d!!!!\n",game_score);//ÃÖÁ¾ Á¡¼ö Ãâ·Â
+    printf("\n!!!!Your TOTAL SCORE is %d!!!!\n",game_score);//ìµœì¢… ì ìˆ˜ ì¶œë ¥
 
-    if(game_score==155)//°ÔÀÓÁ¡¼ö°¡ 155Á¡ ÀÌ¸é
+    if(game_score==155)//ê²Œì„ì ìˆ˜ê°€ 155ì  ì´ë©´
     {
-        my_money=500000;//50¸¸¿ø Áö±Ş
+        my_money=500000;//50ë§Œì› ì§€ê¸‰
     }
-    else if (game_score<155 && game_score>=125)//°ÔÀÓÁ¡¼ö°¡ 154~125Á¡ ÀÌ¸é
+    else if (game_score<155 && game_score>=125)//ê²Œì„ì ìˆ˜ê°€ 154~125ì  ì´ë©´
     {
-        my_money=450000;//45¸¸¿ø Áö±Ş
+        my_money=450000;//45ë§Œì› ì§€ê¸‰
     }
-    else if (game_score<125 && game_score>=105)//°ÔÀÓÁ¡¼ö°¡ 124~105Á¡ ÀÌ¸é
+    else if (game_score<125 && game_score>=105)//ê²Œì„ì ìˆ˜ê°€ 124~105ì  ì´ë©´
     {
-        my_money=300000;//30¸¸¿ø Áö±Ş
+        my_money=300000;//30ë§Œì› ì§€ê¸‰
     }
     else if (game_score<105 && game_score>=85)
     {
@@ -511,18 +511,18 @@ void buy_things()
     {
         my_money=10000;
     }
-    else//¾Æ¹«°Íµµ ¾Æ´Ï¸é
-        my_money=30;//30¿ø Áö±Ş
+    else//ì•„ë¬´ê²ƒë„ ì•„ë‹ˆë©´
+        my_money=30;//30ì› ì§€ê¸‰
 
     printf("===========================\n    155 score: 500000 won\n154~125 score: 450000 won\n124~105 score: 300000 won\n104~ 85 score: 100000 won\n 84~ 65 score: 80000  won\n 64~ 45 score: 50000  won\n 44~ 25 score: 10000  won\nOthers: 30 won\n===========================\n");
-    printf("!!!!You got %d won!!!!\n",my_money);//À§¿¡°Å ¼³¸í Ãâ·Â
+    printf("!!!!You got %d won!!!!\n",my_money);//ìœ„ì—ê±° ì„¤ëª… ì¶œë ¥
 
-    gugu();//guguÇÔ¼ö·Î ÀÌµ¿
+    gugu();//guguí•¨ìˆ˜ë¡œ ì´ë™
 }
 
 void gugu()
 {
-    //±¸Á¶Ã¼¸¦ ÃÊ±âÈ­
+    //êµ¬ì¡°ì²´ë¥¼ ì´ˆê¸°í™”
     struct shop gujo[menumax]={
         {menu1, M1, 0},
         {menu2, M2, 0},
@@ -532,29 +532,29 @@ void gugu()
         {menu6, M6, 0},
         {menu7, M7, 0}
     };
-    int select/*¼±ÅÃ*/, i, money_tot=0/*»ì¹°°ÇÃÑÇÕµ·*/,pay=0/*³¾µ·*/;
+    int select/*ì„ íƒ*/, i, money_tot=0/*ì‚´ë¬¼ê±´ì´í•©ëˆ*/,pay=0/*ë‚¼ëˆ*/;
 
     for(i=0;i<menumax-1;i++)
         gujo[i].su=0;
         
-    menu_output();//¸Ş´º Ãâ·ÂÇÔ¼ö
+    menu_output();//ë©”ë‰´ ì¶œë ¥í•¨ìˆ˜
     
     printf("Please select the item you wish to purchase.(in the range of money you have)(1-7) END is 8.\n");
-    printf("There is only ONE shopping opportunity. Please choose carefully.\n");//´Ï°¡ °¡Áö°íÀÖ´Âµ·³»¿¡¼­ »ç°í½ÍÀº°É °ñ¶ó¶ó. ±âÈ¸´Â ÇÑ¹ø»Ó.
-    scanf("%d", &select);//»ç°í½ÍÀº°Å ÀÔ·Â
+    printf("There is only ONE shopping opportunity. Please choose carefully.\n");//ë‹ˆê°€ ê°€ì§€ê³ ìˆëŠ”ëˆë‚´ì—ì„œ ì‚¬ê³ ì‹¶ì€ê±¸ ê³¨ë¼ë¼. ê¸°íšŒëŠ” í•œë²ˆë¿.
+    scanf("%d", &select);//ì‚¬ê³ ì‹¶ì€ê±° ì…ë ¥
 
-    if(select==8)//8¹øÀ» ´©¸£¸é
+    if(select==8)//8ë²ˆì„ ëˆ„ë¥´ë©´
     {
-        printf("\nyou ENDED!\n");//³Ê°¡ ³¡³Â¾î!
+        printf("\nyou ENDED!\n");//ë„ˆê°€ ëëƒˆì–´!
 
     }
-    else if(select<1 || select>menumax)//1~8¹øÀÌ ¾Æ´Ò½Ã
+    else if(select<1 || select>menumax)//1~8ë²ˆì´ ì•„ë‹ì‹œ
     {
-        printf("\nwrong number!\n\n");//Àß¸øµÈ ¼ıÀÚ!
+        printf("\nwrong number!\n\n");//ì˜ëª»ëœ ìˆ«ì!
 
     }
     printf("you choose %s!\n", gujo[select-1].name);
-    while(1)//1~10ÀÌ¿ÜÀÇ °ªÀ» ¹Ş¾ÒÀ¸¸é Àß¸øµÈ¼ıÀÚ! Ãâ·Â ÈÄ ´Ù½Ã ¾ó¸¶¹ŞÀ»°Å³Ä°í Ãâ·Â
+    while(1)//1~10ì´ì™¸ì˜ ê°’ì„ ë°›ì•˜ìœ¼ë©´ ì˜ëª»ëœìˆ«ì! ì¶œë ¥ í›„ ë‹¤ì‹œ ì–¼ë§ˆë°›ì„ê±°ëƒê³  ì¶œë ¥
     {
         printf("How many? (1-10)\n");
         scanf("%d", &gujo[select-1].su);
@@ -567,40 +567,40 @@ void gugu()
 
     printf("\n-----TOTAL-----\n");
     
-    for(i=0;i<menumax-1;i++)//¼ö·®À» 1°³ÀÌ»ó ¼±ÅÃÇßÀ¸¸é ¼±ÅÃ»çÇ× Ãâ·Â ¹İº¹¹®
+    for(i=0;i<menumax-1;i++)//ìˆ˜ëŸ‰ì„ 1ê°œì´ìƒ ì„ íƒí–ˆìœ¼ë©´ ì„ íƒì‚¬í•­ ì¶œë ¥ ë°˜ë³µë¬¸
     {
         if(gujo[i].su==0) continue;
         printf("%s = \\%d * %d = \\%d \n", gujo[i].name, gujo[i].money, gujo[i].su, gujo[i].money * gujo[i].su);
-        money_tot+=gujo[i].money * gujo[i].su;//ÃÑ ÇÕ°è±İ¾×À» Ãâ·Â
+        money_tot+=gujo[i].money * gujo[i].su;//ì´ í•©ê³„ê¸ˆì•¡ì„ ì¶œë ¥
     }  
     
     printf("total = \\%d\n", money_tot);
-    //³¾ µ·À» ÀÔ·Â ¹ŞÀ½
+    //ë‚¼ ëˆì„ ì…ë ¥ ë°›ìŒ
 
     do{
-        if(money_tot==0) break; //ÇÏ³ªµµ ¾È°ñ¶úÀ»°æ¿ì´Â ÀÔ·Â ¹ŞÁö ¾Ê°í ¹İº¹¹®À» Á¾·á
+        if(money_tot==0) break; //í•˜ë‚˜ë„ ì•ˆê³¨ëì„ê²½ìš°ëŠ” ì…ë ¥ ë°›ì§€ ì•Šê³  ë°˜ë³µë¬¸ì„ ì¢…ë£Œ
         printf("\nPut 'how much you pay': ");
         scanf("%d", &pay);
     }while(pay<money_tot);
 
 
-    printf("you pay : \\%d\n", pay);//´Ï°¡ ³¾µ· ÀÔ·Â
-    printf("change : \\%d - \\%d = \\%d \n", pay, money_tot, pay-money_tot);//°Å½º¸§µ· Ãâ·Â
+    printf("you pay : \\%d\n", pay);//ë‹ˆê°€ ë‚¼ëˆ ì…ë ¥
+    printf("change : \\%d - \\%d = \\%d \n", pay, money_tot, pay-money_tot);//ê±°ìŠ¤ë¦„ëˆ ì¶œë ¥
     
-    if(pay>my_money)//¸¸¾à ´Ï°¡ ³¾µ·ÀÌ  ³»°¡°¡Áøµ·ÀÌ Å©¸é
+    if(pay>my_money)//ë§Œì•½ ë‹ˆê°€ ë‚¼ëˆì´  ë‚´ê°€ê°€ì§„ëˆ í¬ë©´
     {
-        printf("\n!!!You don't have enough money... Shopping faile!!!!\n");//µ·ÀÌ ºÎÁ·ÇÕ´Ï´Ù. ¼îÇÎ½ÇÆĞ!!Ãâ·Â
+        printf("\n!!!You don't have enough money... Shopping faile!!!!\n");//ëˆì´ ë¶€ì¡±í•©ë‹ˆë‹¤. ì‡¼í•‘ì‹¤íŒ¨!!ì¶œë ¥
     }
     else
-        printf("\nleft money is %d won.",my_money-money_tot);//¾Æ´Ï¸é ´Ï°¡ ¹°°ÇÀ» »ç°í ³²Àºµ· Ãâ·Â
+        printf("\nleft money is %d won.",my_money-money_tot);//ì•„ë‹ˆë©´ ë‹ˆê°€ ë¬¼ê±´ì„ ì‚¬ê³  ë‚¨ì€ëˆ ì¶œë ¥
 
 
     printf("\n----------------------------------------\n");
-    printf("        thank you~~~~~~~~~~~~~~\n");//°¨»çÇÕ´Ï´Ù~~~~~~~~~~~~~~~~~~~
+    printf("        thank you~~~~~~~~~~~~~~\n");//ê°ì‚¬í•©ë‹ˆë‹¤~~~~~~~~~~~~~~~~~~~
     printf("----------------------------------------\n");  
 }
 
-void menu_output()//¸Ş´ºÃâ·ÂÇÔ¼ö
+void menu_output()//ë©”ë‰´ì¶œë ¥í•¨ìˆ˜
 {    
     puts("\n-------------------------------");
     printf("1. %s : \\%d\n", menu1, M1);
